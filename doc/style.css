@@ -1,0 +1,38 @@
+* {
+  margin:0px;
+  padding:0px;
+  font-family: Lucida Console, Monaco, monospace;
+}
+
+html, body {
+  height:100%;
+}
+
+#header {
+  width:100%;
+  text-align:center;
+}
+
+#header_img {
+  width:75%;
+  min-width:420px;
+}
+
+h1 {
+  text-align:center;
+  margin:42px 0;
+}
+
+p, ul, li, h3 {
+  width:90%;
+  margin:auto;
+}
+
+h3 {
+  margin:15px auto;
+}
+
+#footer {
+  width:100%;
+  height:60px;
+}

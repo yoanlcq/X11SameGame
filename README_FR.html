@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+	<meta charset="utf-8">
+	<title>Jeu de billes</title>
+	<link rel="stylesheet" type="text/css" href="doc/style.css">
+  </head>
+  <body>
+
+    <div id="header"><img id="header_img" alt="header" src="doc/title.png"></div>
+	<p style="font-size:20px;text-align:center; width:100%;"><i>Manuel Utilisateur</i></p>
+	
+	
+	<div id="content">
+	  <h1>Avant de jouer</h1>
+	  <p>Ce jeu est la version originale d'un micro-projet fait dans le cadre d'un DUT informatique.</p>
+	  <p>Il utilise une bibliothèque rudimentaire programmée par un professeur et ainsi <b>ne marche que sous un Linux utilisant X-window.</b> <i>(Dans un futur proche, il est possible que Wayland remplace X-window).</i></p>
+	  <p>J'ai essayé de rendre cette application portable, de sorte à ce qu'elle fonctionne sans installation.<br>Si vous rencontrez des problèmes, je vous invite à me contacter.</p>
+	  <!--<p>sudo apt-get install libx11-dev;</p>-->
+	  <h1>Indications</h1>
+	  <h3>Lors de la modification de champs de texte dans le menu principal : </h3>
+	  <ul>
+		<li>Echap permet d'annuler les modifications.</li>
+		<li>Entree ou Clic souris sert à valider.</li>
+		<li>Flèches gauche ou droite pour déplacer le curseur.</li>
+		<li>Backspace et Suppr. pour leur usage habituel.</li>
+	  </ul>
+	  <h3>La configuration</h3>
+	  <ul>
+		<li>Ce fichier est à la fois un thème visuel de jeu et des paramètres de jeu, comme la taille de la grille, l'image de fond, le nombre de couleurs de billes, etc.</li>
+		<li>Différentes configurations sont prêtes à être testées, dans <b>data/cfg/</b>.</li>
+		<li><b>Vous pouvez créer la vôtre.</b> Plus d'informations en bas.</li>
+	  </ul>
+	  <h3>La map</h3>
+	  <ul>
+		<li>Ce fichier contient des informations sur la position des billes et leur couleur.</li>
+		<li>Si un fichier de map est introuvable (chemin vide inclus), alors la grille est générée aléatoirement.</li>
+		<li>Certaines maps sont prêtes à l'emploi dans <b>data/map/</b>.</li>
+		<li><b>Vous pouvez créer la vôtre.</b> Plus d'informations en bas.</li>
+	  </ul>
+	  <h1>Le jeu</h1>
+	  <p>Le but est de gagner un maximum de points. Pour cela, il faut cliquer sur des groupes de billes de même couleur afin de les éliminer et former d'autres groupes.</p>
+	  <p>Le nombre de points en fonction du nombre de billes est exponentiel ! La meilleure stratégie consiste à faire grossir un groupe d'une couleur puis l'éliminer une fois qu'il n'est plus possible de l'agrandir. Plus le paquet est gros, plus chaque bille apporte de points !</p>
+	  <h1>Consulter les scores</h1>
+	  <p>Un fichier de score est utilisé pour chaque configuration utilisée.</p>
+	  <p><b>Il garde trace d'absolument tous les scores enregistrés pour la configuration</b> et les trie par ordre décroissant.</p>
+	  <p>Pour un fichier de configuration <b>data/cfg/foo.cfg</b>,</p>
+	  <p>Son fichier de score est <b>data/cfg/foo.cfg.scores</b>.</p>
+	  <p> C'est un fichier de texte, il est donc consultable. Une entrée est de la forme : </p>
+	  <p>score <-- pseudo (map)</p>
+	  <h1>Créer une configuration</h1>
+	  <p>
+		Le jeu vient avec quelques fichiers de configuration prêts à l'emploi. Ils se trouvent dans <b>data/cfg/</b>.
+		Il est conseillé de copier une configuration existante, sous un autre nom, et de partir de là.<br>
+		Cependant, l'ordre dans lequel les variables sont placées dans le fichier n'importe pas.<br>
+		Voici la convention d'écriture d'un fichier .cfg pour ce jeu :
+	  </p>
+	  <ul>
+		<li>Tout ce qui suit un '#' est considéré comme un commentaire sur une ligne.</li>
+		<li>Lorsqu'une couleur est attendue, la noter en hexadécimal exclusivement. <br>Ex. 0xFF0000</li>
+		<li>Pour palette_grille, une notation ensembliste est attendue. Entre accolades, les éléments sont des 
+		  couleurs, séparés par des virgules. Le nombre d'éléments dans cet ensemble ne doit pas dépasser 6. La palette permet de remplacer une image de bille manquante (ou non souhaitée) par une jolie bille artisanale.<br>Ex. {0xFF0000, 0x00FF00}</li>
+		<li>A chaque élément de cette palette, correspond un fichier image. <br>Ex. 'image_bille_1' correspond à l'image de la première couleur de la palette.</li>
+		<li>Lorsqu'un chemin vers un fichier image est attendu, mettre le nom de fichier entre guillemets.<br>Si aucune 
+		  image n'est désirée, mettre les guillemets vides tout de même.</li>
+		<li>Pour le reste, un nombre entier <b>non-signé</b> est attendu.</li>
+	  </ul>
+	  <h1>Créer une map</h1>
+	  <p>Comme la configuration, c'est un bête fichier texte. Regardez les exemples de <b>/data/map</b>.</p>
+	  <ul>
+		<li>Les caractères 'R', 'V', 'B', 'C', 'J', 'M' vont remplir la bille avec respectivement les couleurs 
+		  rouge, vert, bleu, cyan, jaune et magenta quelle que soit la palette de couleurs de la grille.</li>
+		<li>Les caractères '1', '2', '3', '4', '5', '6' vont remplir la bille avec la couleur de la palette de 
+		  la grille, ayant pour index le chiffre.</li>
+		<li>les espaces génèrent un trou.</li>
+	  </ul>
+	  <div id="footer"></div>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
